@@ -1,0 +1,23 @@
+
+
+Take emails and sort them alphabethical
+
+
+def Sort_append():
+	FROM_STR = "james@gogo.com"
+	TO_STR = "adam@doomr.us"
+	
+	FROM_STR < TO STR
+	
+	construct one long string from these to email addresses
+	
+	UniqIdent = "adam@doomr.us_james@gogo.com"
+	
+	check if UniqIdent exists in dictionary
+		if it does not exist
+			append to dictionary
+			append to sql database and set count to 1
+		
+		if it does exist
+			update count field for UniqIdent in database with 1
+				UPDATE myTable SET Column1=Column1+1	

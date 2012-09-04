@@ -1,0 +1,59 @@
+-------------Start
+Iv started this darn journal a bit late, but i have finally gotten github to work.
+This is just my own Sort of Journal/TODO/wtf/thinkthinkthink and so on list.
+Its not perfect and its without a doubt flawed and could need some fixing and what not,
+but i hope you understand that it is just for my own sake.
+
+
+
+
+-Things i should cover.
+	Github with linux & eclipse (problems, solutions)
+		Password, ssh, eclipse config, generation of keys, etc
+		
+-------------Learning python
+
+	General
+		if you add a comma to the end when printing something, it wount do a newline like it does on default.  print "Hej",	
+		
+		
+		
+	Global variables
+	Functions
+	classes
+	imports and modules
+	Comment problems and irritation
+	sqlite (connecting) insert etc etc etc
+	loops
+	os.listdir
+	opening, reading and closing filestreams
+	email module
+		Msg type
+		extracting email with email.utils
+			regular expressions
+	
+		
+-------------Functionality of the application
+
+graphing
+	gnuplot
+	Plotting data in a way where it is understandable
+
+
+database thoughts
+	structures
+	optimization
+
+Different types of scanners
+	Interesting word scanner
+		refer to TODO:3. Interesting_word_scanner
+	Scanner to remove unwanted mail "Your mailbox has now reached it limit..."
+	Scanner to detect massive amounts of similar mails
+		not sure how to do this, must store common words and extrapolate high frequency of commen words and flag mails for unwanted scanner
+	
+Progressbar
+
+Sorting mechanisms for database structure and counting of corrospondance instences
+
+
+
