@@ -1,0 +1,19 @@
+Implement a module where you can define a wordlist.
+Make it so that it is possible to "grade" the level of interest with stars or a number. 1 to 5
+Make sure it is not case sensitive
+
+Interest level 5
+Password,password,pass,Passw0rd;
+
+
+Interest level 3
+Address, phone number, Phone, Telefone, street
+
+Interest level 1
+name, age, 
+
+
+
+
+Give the mails with interesting keywords a score depending on the amount of 
+interesting keywords and the collective score.

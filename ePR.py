@@ -30,7 +30,7 @@ print "muck it up and so on. It is just a \"learn to python\" project"
 print "\nImporting mail.\n"
 
 
-    #Global vars
+    #Global vars  SE SAA AT FAA KOMMENTEREDE DINE VARIABLER !!! KETIL
 mailcounter = 0
 folder_size = 0
 numlines = 0
@@ -38,6 +38,10 @@ mailfile = ""
 filepath = ""
 conn = ""
 cur = ""
+walkpath = ""
+top_level_dir = "."
+
+
 
     #Functions
 def openfiles():
@@ -57,46 +61,42 @@ def dataextraction():
     global  numlines
     global  filepath
     global  folder_size
-
-
-
+    global  path
     
-    path = "Testmails"
     for file_loop in os.listdir(path):
         slash = "/"
         filepath = path + slash + file_loop
+        
         if os.path.isfile(filepath):
-                #call openfiles function
-            openfiles() 
-                #enumerate amount of lines in file
+            openfiles() #call openfiles function
+            #enumerate amount of lines in file
             for line in open(filepath): 
                 numlines += 1
-                    
+                 
                 #Parse imported file to a format get_all() can handle
             msg = email.message_from_string(mailfile)
                 #if file checked returns None(no email addresses), skip to next file(loop)
             if msg.get('To') is None:
-                continue
+                continue 
             
-                #get current filesize and put it into filesize var, append current filesize to folder_size to count amount of data
+            #get current filesize and put it into filesize var, append current filesize to folder_size to count amount of data
             filesize = os.path.getsize(filepath)
             folder_size += filesize
             
                 #Get wanted fields via msg.get(), use regular expressions to remove unnessasarry gunk,stuff and poop, then print results.        
             TO_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)",  str(msg.get('To')), re.UNICODE)[0]        
             FROM_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)", str(msg.get('from')), re.UNICODE)[0]
-            #DATE_str = str(msg.get('Date'))
-            #SUBJECT_str = str(msg.get('Subject'))
-            #print "\tTO: " + str(TO_str) + "\tFROM: " + str(FROM_str) +"\tFileSize = %0.7f MB" % (filesize/(1024*1024.0))
+            #print "\tTO: " + str(TO_str) + "\tFROM: " + str(FROM_str) +"\tFileSize = %0.7f MB" % (filesize/(1024*1024.0)) +"\tPath:" + str(filepath)
+            
+            
             cur.execute("INSERT INTO Pidgeon_Nest VALUES ('"+ TO_str +"','"+FROM_str+"','"+str(filepath)+"') ")
             conn.commit()
-            #print SUBJECT_str
-            #print DATE_str + "\n"
-            
-                #register filepath for the individual file, for later database logging
-            #filepath = os.path.abspath(filepath)
-                #count each file processed amount of loops (files handled)
+            #register filepath for the individual file, for later database logging
+            filepath = os.path.abspath(filepath)
+            #count each file processed amount of loops (files handled)
             mailcounter += 1
+
+
 
 def Sqlconnection():
     global conn
@@ -107,10 +107,17 @@ def SqlCreateTable():
     cur.execute("CREATE TABLE IF NOT EXISTS Pidgeon_Nest (m_from, m_to, m_filename)")
     conn.commit()
 
+def processDirectory ( args, dirname, filenames ):
+    global path                            
+    path = dirname
+    dataextraction()
+
 
 
 Sqlconnection()
 SqlCreateTable()
-dataextraction()
+
+os.path.walk(top_level_dir, processDirectory, None)
+
 
 print "\nFinished!\n"    + "\t  Files processed:" + str(mailcounter) +"\t\tData processed:%0.2fMB" % (folder_size/(1024*1024.0)) + "\t\tNumber of Lines:" + str(numlines)  +"\n"
