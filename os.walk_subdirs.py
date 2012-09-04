@@ -10,5 +10,5 @@ def processDirectory ( args, dirname, filenames ):
 top_level_dir = "."                                                    
 os.path.walk(top_level_dir, processDirectory, None )                            
                                                                                 
-##os.path.walk() works with a callback: processDirectory() will be              
+#os.path.walk() works with a callback: processDirectory() will be              
 ##called for each directory encountered.

@@ -1,0 +1,7 @@
+count mails i dir, pr iteration i loop skal procentvis stigning i progressbar
+
+antalmails/100
+	    %
+
+
+regn i floats for at se procent vis hvor du er nået til (mere præcist)
