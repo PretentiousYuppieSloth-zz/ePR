@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#Playing around with sqlite3 in python
+#Creating database, select, insert,update, deleting.
+#
+#We will be using the file extension .memory, so the database will exist in memory only
+
+
+	#imports
+import sqlite3 
+import sys
+
+	#create connection put db in memory
+conn = sqlite3.connect('dbtest.db')
+
+	#Create a cursor for db interaction
+cur = conn.cursor()
+
+###
+#Create function for creating table in DB
+###
+def createTable():
+	# execute create table statement to create new table in database.
+	cur.execute("CREATE TABLE IF NOT EXISTS mDB_info (m_from, m_to, m_filename, m_date, m_time)")
+	
+	#insert data into the mDB_info database
+	#cur.execute("INSERT INTO mDB_info VALUES ('ketil@fissesnaps.dk','matias@roevkanon.dk','roevmail.txt','2001-08-12','19:30') ")
+
+	#commit changes to database	
+	conn.commit()
+	
+	#close connection.
+	cur.close()
+
+#call create table function
+
+createTable()
+
+def SelectData():
+	cur = conn.cursor()
+	for row in cur.execute("SELECT * FROM mDB_info"):
+		print "\n" + str(row)
+
+	cur.execute("SELECT m_to FROM mDB_info WHERE m_time='19:30'")
+	print "\n" + str(cur.fetchone()[0])
+	cur.close()
+
+SelectData()
+
