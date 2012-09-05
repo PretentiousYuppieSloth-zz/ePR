@@ -9,7 +9,7 @@ def Sort_append():
 	
 	FROM_STR < TO STR
 	
-	construct one long string from these to email addresses
+	construct one long string from these to email addresses using .join
 	
 	UniqIdent = "adam@doomr.us_james@gogo.com"
 	

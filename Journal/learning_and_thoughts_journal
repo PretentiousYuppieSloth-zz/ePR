@@ -27,6 +27,12 @@ but i hope you understand that it is just for my own sake.
 	loops
 	os.listdir
 	opening, reading and closing filestreams
+	lists
+		If a list contains strings, you can combine the string into a single long string using the join string method.
+		Sort
+			The sort method sorts a list in place. List.sort()
+			To get a sorted copy, use the built-in sorted function. out = sorted(L)
+		
 	email module
 		Msg type
 		extracting email with email.utils

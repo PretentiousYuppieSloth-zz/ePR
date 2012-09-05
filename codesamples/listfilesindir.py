@@ -1,7 +1,7 @@
 import os
 
 print "\t\tList files in directory:\n"
-path = "graphing-gnuplot"
+path = "../emails/._dep.gd@syriantelecom.sy"
 for filenr in os.listdir(path): #list each element in directory
 	slash = "/"
 	filepath = path + slash + filenr

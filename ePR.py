@@ -62,15 +62,16 @@ def dataextraction():
     global  filepath
     global  folder_size
     global  path
+    global  lines
+    
     
     for file_loop in os.listdir(path):
         slash = "/"
         filepath = path + slash + file_loop
-        
         if os.path.isfile(filepath):
             openfiles() #call openfiles function
             #enumerate amount of lines in file
-            for line in open(filepath): 
+            for lines in open(filepath): 
                 numlines += 1
                  
                 #Parse imported file to a format get_all() can handle
@@ -90,7 +91,7 @@ def dataextraction():
             
             
             cur.execute("INSERT INTO Pidgeon_Nest VALUES ('"+ TO_str +"','"+FROM_str+"','"+str(filepath)+"') ")
-            conn.commit()
+            #conn.commit()
             #register filepath for the individual file, for later database logging
             filepath = os.path.abspath(filepath)
             #count each file processed amount of loops (files handled)
