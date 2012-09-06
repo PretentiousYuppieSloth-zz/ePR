@@ -1,4 +1,0 @@
-hvis jeg appender min sql til en variable og husker at smide et semikolon ind, så kan jeg commit hele skidtet til sidst
-
-
-find ud af hvor mange chars der max må være i en sql execute statement.

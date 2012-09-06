@@ -1,7 +1,7 @@
-count mails i dir, pr iteration i loop skal procentvis stigning i progressbar
-
+count mails in directory pr iteration in loop,  make a procentwise increse in a progressbar
+	Do a print ending with a comma so a newline wount be appended..  might be a better way to remove the last dot or number and append.. threaded ?
+	
 antalmails/100
 	    %
 
-
-regn i floats for at se procent vis hvor du er nået til (mere præcist)
+Calculate in floats to get a more precise estimate

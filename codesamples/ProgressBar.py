@@ -1,22 +1,19 @@
 #!/usr/bin/env python
-
+#https://github.com/lunaryorn/snippets/blob/master/python-misc/du.py
+#http://love-python.blogspot.dk/2008/05/list-of-files-directories-in-python.html
 #count amount of mails in directory
 
 import os
 
-top_level_dir = "../"
+top_level_dir = "../emails"
+filecount = 0
 
-
-def processDirectory ( args, dirname, filenames ):
-    global path                            
-    path = dirname
- 
-    for filenr in os.listdir(path): #list each element in directory
-        slash = "/"
-        filepath = path + slash + filenr
-        if os.path.isfile(filepath):   #if we are working with a file.. print the bitch.
-            print filepath #print filename
-            
-
+def processDirectory ( args, dirname, filenames ):                           
+    global filecount
+    print filenames
+    #.print filecount
+        
 
 os.path.walk(top_level_dir, processDirectory, None)
+
+

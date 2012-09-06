@@ -5,9 +5,7 @@ Created on 24/08/2012
 #!/usr/bin/env python
 #
 #TODO:
-#Implement mailbox.Maildir if possible. 
-#http://docs.python.org/library/mailbox.html
-#
+# check the TODO list thingy
 
 #imports listed here.
     #Email.message is used so i can call the email.message_from_string() parsing function 
@@ -30,7 +28,7 @@ print "muck it up and so on. It is just a \"learn to python\" project"
 print "\nImporting mail.\n"
 
 
-    #Global vars  SE SAA AT FAA KOMMENTEREDE DINE VARIABLER !!! KETIL
+    #Global vars... (comment to self) COMMENT YOU GOD DAMN VARS YOU LAZY FUCK 
 mailcounter = 0
 folder_size = 0
 numlines = 0
@@ -39,7 +37,9 @@ filepath = ""
 conn = ""
 cur = ""
 walkpath = ""
-top_level_dir = "."
+top_level_dir = "./emails"
+pathlist = []
+filecount = 0
 
 
 
@@ -66,6 +66,7 @@ def dataextraction():
     
     
     for file_loop in os.listdir(path):
+        
         slash = "/"
         filepath = path + slash + file_loop
         if os.path.isfile(filepath):
@@ -109,16 +110,25 @@ def SqlCreateTable():
     conn.commit()
 
 def processDirectory ( args, dirname, filenames ):
-    global path                            
-    path = dirname
-    dataextraction()
-
-
-
-Sqlconnection()
-SqlCreateTable()
+    global pathlist
+    global filecount
+    pathlist.append(dirname)
+    
+    for filenr in os.listdir(dirname): #list each element in directory
+        slash = "/"
+        filepath = dirname + slash + filenr
+        if os.path.isfile(filepath) and not os.path.islink(filepath):   #if we are working with a file.. print the bitch.
+            filecount += 1
 
 os.path.walk(top_level_dir, processDirectory, None)
+
+print filecount
+
+#Sqlconnection()
+#SqlCreateTable()
+#dataextraction()
+
+
 
 
 print "\nFinished!\n"    + "\t  Files processed:" + str(mailcounter) +"\t\tData processed:%0.2fMB" % (folder_size/(1024*1024.0)) + "\t\tNumber of Lines:" + str(numlines)  +"\n"

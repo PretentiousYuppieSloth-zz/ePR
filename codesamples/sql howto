@@ -11,7 +11,7 @@
 import sqlite3 
 import sys
 
-	#create connection put db in memory
+	#create connection put db in file
 conn = sqlite3.connect('dbtest.db')
 
 	#Create a cursor for db interaction
@@ -25,7 +25,7 @@ def createTable():
 	cur.execute("CREATE TABLE IF NOT EXISTS mDB_info (m_from, m_to, m_filename, m_date, m_time)")
 	
 	#insert data into the mDB_info database
-	#cur.execute("INSERT INTO mDB_info VALUES ('ketil@fissesnaps.dk','matias@roevkanon.dk','roevmail.txt','2001-08-12','19:30') ")
+	#cur.execute("INSERT INTO mDB_info VALUES ('sloth@fissesnaps.dk','zebra@roevkanon.dk','roevmail.txt','2001-08-12','19:30') ")
 
 	#commit changes to database	
 	conn.commit()

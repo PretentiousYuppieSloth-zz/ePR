@@ -1,0 +1,11 @@
+
+
+If i append my sql statement to a variable and remember the semicolon at the end, i can commit the whole string at the end..max 4000chars though
+
+
+
+make the file reader only open 50-100...X amounts of line in the mail ( headers etc)
+	
+
+	
+Look for a function that can be used as a alternative to os.walk.path, os.walk.path will check filenames also( so if we can find one that only checks for path it sould give less clockcycles)
