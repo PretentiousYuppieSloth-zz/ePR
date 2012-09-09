@@ -1,16 +1,11 @@
 import os
 
-path = "."
-dir_count = 0
-file_count = 0
+top_level_dir = "../codesamples"
+counter = 0
 
-for pathname, dirnames, filenames in os.walk(path):
-    for filenr in os.listdir(path): #list each element in directory
-        filepath = os.path.join(pathname, filenr)
-        if os.path.isfile(filepath):   #if we are working with a file.. print the bitch.
-            #print filepath #print filename
-            file_count += len(filepath)
+for dirName,subdirList,fileList in os.walk( top_level_dir ) :
+    for fname in fileList :
+        counter +=1
 
-print file_count
+print counter
 
-#print file_count
