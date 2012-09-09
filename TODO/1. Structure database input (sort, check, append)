@@ -3,6 +3,10 @@
 Take emails and sort them alphabethical
 
 
+!!!#if we append all the calculated instences to a field in a dictionary, we can append the final result pr folder or similar to the sql database
+
+
+
 def Sort_append():
 	FROM_STR = "james@gogo.com"
 	TO_STR = "adam@doomr.us"
@@ -21,3 +25,6 @@ def Sort_append():
 		if it does exist
 			update count field for UniqIdent in database with 1
 				UPDATE myTable SET Column1=Column1+1	
+
+				
+		

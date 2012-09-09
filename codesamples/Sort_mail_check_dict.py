@@ -5,9 +5,10 @@ import hashlib
 import cPickle as pickle
 data_md5 = ""
 contactjoin = ""
+
+unique_ID_dict = {}
+
 def Sort_append():
-    #FROM_STR = "ames@gogo.com"
-    #TO_STR = "bam@doomr.us"
     FROM_STR = "bam@doomr.us"
     TO_STR = "ames@gogo.com"
     
@@ -27,7 +28,25 @@ def Sort_append():
         data_pickle = pickle.dumps(data)
         data_md5 = hashlib.md5(data_pickle).hexdigest()
 
-        
+    
+    if unique_ID_dict.has_key(contactjoin) :
+        print "id exists, submit to sqlite database"
+        print "update count field for UniqIdent in database with 1"
+        print "sql = UPDATE myTable SET Column1=Column1+1"
+    else:
+        print "Field does not exist"
+        print "append to dictionary"
+        unique_ID_dict[contactjoin] = data_md5        
+        print "append to sql database and set count to 1"
+    
 Sort_append()
-print "ID-String: " + contactjoin
-print "MD5-Hash: " + data_md5
+print "\t" + str(unique_ID_dict.items())
+
+print ""
+print ""
+
+Sort_append()
+print "\t" + str(unique_ID_dict.items())
+
+#print "ID-String: " + contactjoin
+#print "MD5-Hash: " + data_md5

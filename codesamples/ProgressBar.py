@@ -10,10 +10,9 @@ filecount = 0
 
 def processDirectory ( args, dirname, filenames ):                           
     global filecount
-    print filenames
-    #.print filecount
+    filecount +=1
         
 
 os.path.walk(top_level_dir, processDirectory, None)
-
+print filecount
 
