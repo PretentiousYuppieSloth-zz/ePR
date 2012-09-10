@@ -1,0 +1,11 @@
+Construct a simple mail scanner, capable of handeling spam mail based on keywords.
+	
+	
+Construct a database of keywords while the script is running to map email instances where certain keywords are pleantyfull.
+	If email has x amounts of mails with SEX or Viagra or similar, give it a grade.
+		If grade is equal to X, exclude it and put it in a list of possible removable emails
+
+
+construct a scanner that handles mails like "your inbox is almost full, and similar emails"
+	Done by regular expressions and then doing a  if and if true call a continiue(so the loop goes on to the next file)
+ 

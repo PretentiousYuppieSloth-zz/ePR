@@ -1,0 +1,10 @@
+0.8	Meredith	1	O'Malley	10
+0.4	Meredith	1	Derek	12
+0.4	Avery	2	Lexie	7
+0.4	Teddy	3	Sloan	14
+0.4	Karev	4	Lexie	7
+0.4	Karev	4	Izzie	15
+0.4	Burke	6	Christina	17
+0.4	Lexie	7	Avery	2
+0.4	Lexie	7	Karev	4
+0.4	Lexie	7	Sloan	14

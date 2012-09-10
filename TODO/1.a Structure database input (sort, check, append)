@@ -1,7 +1,7 @@
 
 !!!check if this method works if there is more then one "sender or reciver"
 Take emails and sort them alphabethical
-
+## it might be important to check how the how to implement Message-ID and check for duplets
 
 !!!#if we append all the calculated instences to a field in a dictionary, we can append the final result pr folder or similar to the sql database
 

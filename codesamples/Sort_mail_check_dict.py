@@ -1,6 +1,6 @@
 ##Take emails and sort them alphabethical
 ##Generate MD5 hash for display in plot (indirect Data Anonymization)
-
+## it might be important to check how the how to implement Message-ID and check for duplets
 import hashlib
 import cPickle as pickle
 data_md5 = ""

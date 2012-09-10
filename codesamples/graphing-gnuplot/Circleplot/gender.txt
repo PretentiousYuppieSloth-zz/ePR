@@ -1,0 +1,2 @@
+0.4	Arizona	11	Callie	18
+0.4	Callie	18	Arizona	11

@@ -1,0 +1,10 @@
+Count the amount of updates that have been done.
+
+Count the amount of unique mails that has been added.
+
+
+Similar to the "files processed", "Data processed", " number of lines"
+
+
+
+In each loop where either an update or insert to corrospondence map is done, implement a counter

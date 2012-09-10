@@ -46,11 +46,12 @@ filepath = ""                   #???
 conn = ""                       #sqlite connection 
 cur = ""                        #????
 walkpath = ""                   #????
-top_level_dir = "Testmails"     #Directory to perform data extraction on.
+top_level_dir = "emails/deputydg@syriantelecom.sy/new/"     #Directory to perform data extraction on.
 data_md5 = ""                   #MD5_Hash
-UniqIdent = ""                #for the concatenated ID-String
+UniqIdent = ""                  #for the concatenated ID-String
 TO_str = ""                     #
 FROM_str = ""                   #
+unique_ID_dict = {}             # Dictionary for sql appended mail lookup
 
     #Functions
 def openfiles():
@@ -71,6 +72,7 @@ def Sort_append():
     global TO_str
     global UniqIdent
     global data_md5
+    global unique_ID_dict
     if FROM_str < TO_str:
         UniqIdent = FROM_str + "__" + TO_str
         data = [UniqIdent]
@@ -96,6 +98,7 @@ def dataextraction():
     global UniqIdent
     global TO_str
     global FROM_str
+    Message_ID = ""
     
     for file_loop in os.listdir(path):
         slash = "/"
@@ -103,7 +106,7 @@ def dataextraction():
         if os.path.isfile(filepath):
             openfiles() #call openfiles function
             #enumerate amount of lines in file
-            for lines in open(filepath): 
+            for lines in open(filepath):
                 numlines += 1
                  
                 #Parse imported file to a format get_all() can handle
@@ -119,11 +122,27 @@ def dataextraction():
                 #Get wanted fields via msg.get(), use regular expressions to remove unnessasarry gunk,stuff and poop, then print results.        
             TO_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)",  str(msg.get('To')), re.UNICODE)[0]        
             FROM_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)", str(msg.get('from')), re.UNICODE)[0]
+            
+            Message_ID = str(msg.get('Message-ID'))
+            
             #print "\tTO: " + str(TO_str) + "\tFROM: " + str(FROM_str) +"\tFileSize = %0.7f MB" % (filesize/(1024*1024.0)) +"\tPath:" + str(filepath)
             Sort_append()
             
-            cur.execute("INSERT INTO Pidgeon_Nest VALUES ('"+ data_md5 +"','"+ UniqIdent +"','"+ TO_str +"','"+FROM_str+"','"+str(filepath)+"') ")        
-            #register filepath for the individual file, for later database logging //////conn.commit()
+            cur.execute("INSERT INTO Pidgeon_Nest VALUES ('"+ data_md5 +"','"+ UniqIdent +"','"+ TO_str +"','"+FROM_str+"','"+Message_ID+"','"+str(filepath)+"') ")        
+            #register filepath for the individual file, for later database logging //////
+            
+            if unique_ID_dict.has_key(UniqIdent) :
+                    ##id exists, submit to sqlite database"
+                    ##update database via UPDATE
+                cur.execute("UPDATE correspondence_map SET count=count+1 WHERE md5_hash='"+data_md5+"'")
+            else:
+                    ##"Field does not exist"
+                    #append to dictionary"
+                unique_ID_dict[UniqIdent] = data_md5        
+                    ##append to sql database and set count to 1"
+                cur.execute("INSERT INTO correspondence_map VALUES ('"+ data_md5 +"','1')")
+            
+            conn.commit()
             filepath = os.path.abspath(filepath)
             #count each file processed amount of loops (files handled)
             mailcounter += 1
@@ -135,9 +154,11 @@ def Sqlconnection():
     cur = conn.cursor()
 
 def SqlCreateTable():
-    cur.execute("CREATE TABLE IF NOT EXISTS Pidgeon_Nest (md5_hash,id_string,m_from, m_to, m_filename)")
+    cur.execute("CREATE TABLE IF NOT EXISTS Pidgeon_Nest (md5_hash,id_string,m_from, m_to,Message_ID,m_filename)")
     conn.commit()
-
+    cur.execute("CREATE TABLE IF NOT EXISTS correspondence_map (md5_hash,count)")
+    conn.commit()
+    
 def processDirectory ( args, dirname, filenames ):
     global path                            
     path = dirname
