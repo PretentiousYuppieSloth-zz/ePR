@@ -1,0 +1,53 @@
+codesamples/graphing-gnuplot
+Plot corrospondances 
+	Via circle plot
+	
+	
+	
+	The homerun example file is very nice, 
+		1. The first comma digit is the Weight of the specific plot (like in neural networks
+		2. Then follows a name(which should be the individual email hashed, not the 2 addresses hashed) of the first person/emails
+		3. Then a number that represents the position of the "person/address" on the graph
+		4. Then follows a name(which should be the individual email hashed, not the 2 addresses hashed) of the second person/emails
+		5. Then a number that represents the position of the "person/address" on the graph
+
+
+	We sould form my dataset in the correspondence_map database something like this then.
+		count(weight), First Email Hashed , Second Email, UniqIdentifier
+				-Like this, we can call the uniqIdentifier via sql in the Pidgeon_nest database if we need to know who is part of corresponding
+				-Besides this, if we look at the graph, and we find a interesting correspondence, we can later make a module that maps that single email address, without reviling the specific identity
+						-On top of this, we will have all the filenames in our Pidgeon_nest database, so we could pull the filename and locations for a report generation tool
+
+	(done)We need to figure out how to generate the circle plot code via python.
+		Some of the code should look the same all the time.
+			import Gnuplot
+			gp = Gnuplot.Gnuplot()
+			gp('set term jpeg size 600,700')
+			gp('set output "plot_scattered.jpeg"')
+
+			
+			gp('set xtics rotate ("Meredith" 1,"Avery" 2,"Teddy" 3,"Karev" 4,"Bailey" 5, "Burke" 6, "Lexie" 7, "Owen" 8, "Addison" 9, "O\'Malley" 10, "Arizona" 11, "Derek" 12, "April" 13, "Sloan" 14, "Izzie" 15, "Webber" 16, "Christina" 17, "Callie" 18 ) scale 0')
+			gp('set ytics ( "Meredith" 1, "Avery" 2, "Teddy" 3, "Karev" 4, "Bailey" 5, "Burke" 6, "Lexie" 7, "Owen" 8, "Addison" 9, "O\'Malley" 10, "Arizona" 11, "Derek" 12, "April" 13, "Sloan" 14, "Izzie" 15, "Webber" 16, "Christina" 17, "Callie" 18 ) scale 0')
+			gp.plot('[0:19][0:23] "homerun.txt" using 3:5:1 title "homerun" with circles linecolor rgb "#9ACD32" fill solid noborder')
+
+			Remember that we have to do a for each loop where we add each md5(email) to the xtics and ytics
+				
+				make a list via a sql statement with all unique md5_emails_hashes
+				Loop through list and create string similar to this  (x being a incrementing counter where 1 is the first)
+					"\"+variable_name+\" x,"   (figure out a solution to the problem with the comma at the end of the fully constructed string)
+
+					or call the data directly via gnuplot and sqlite
+						gp(plot "< sqlite3 sqlite1.db  'select * from data'" using 2:xtic(1) title "hair", "" using 4 t "vision")
+							https://www.linux.com/news/software/developer/26873-generating-graphs-with-gnuplot-part-3
+
+
+
+http://freeblogger.org/node/160
+http://www.uncg.edu/phy/hellen/Python_Instructions.html
+http://gnuplot.sourceforge.net/demo/surface1.html
+http://linuxgazette.net/114/andreasen.html
+http://stackoverflow.com/questions/8077099/short-guide-how-to-use-gnuplot-with-python
+http://www.uncg.edu/phy/hellen/Python_Instructions.html
+http://users.aims.ac.za/~mike/python/numerical_analysis.html
+https://www.linux.com/news/software/developer/26873-generating-graphs-with-gnuplot-part-3
+http://stackoverflow.com/questions/6888580/plotting-lines-with-gnuplot-python

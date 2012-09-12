@@ -9,3 +9,10 @@ make the file reader only open 50-100...X amounts of line in the mail ( headers 
 
 	
 Look for a function that can be used as a alternative to os.walk.path, os.walk.path will check filenames also( so if we can find one that only checks for path it sould give less clockcycles)
+
+
+#
+#TODO:
+#Implement mailbox.Maildir if possible. 
+#http://docs.python.org/library/mailbox.html
+#

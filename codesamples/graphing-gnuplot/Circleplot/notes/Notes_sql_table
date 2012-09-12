@@ -1,0 +1,43 @@
+INSERT INTO correspondence_map VALUES ('1','test@blah.com',null,"fish@meh.net",null,"jfpiodsajgoij492139")
+cur.execute("CREATE TABLE IF NOT EXISTS correspondence_map (count,m_from,mfrom_id,m_to,mto_id,md5_hash)")
+
+
+
+
+every email(md5hashed) needs a unique id so when plotting, we can use that ID to give them a position on the plot x and y plot
+this is importent.
+
+
+
+either we need to pull every single username, then assign them a unique id and while submitting it to the correspondence_map table, make sure this is included.
+	its late so i might have forgotten how the fu'c this shit works
+	
+
+
+basically we need to make a database that looks like this
+	The count is the amount of corrospondences they have had.
+	The uniqueNumber is locked to the email address, so we can plot based on the location on the graph
+
+0.4	Lexie	7	Sloan	14
+(int)count (string)mail_from (int)uniqueNumber (string)mail_to (uniqueNumber)
+
+5 peet@fish.com 2 ceo@lake.net 24
+
+
+
+Generate data via  http://www.generatedata.com/ maybe  ?
+
+(sqlite create table) (how  do i identify a AUTO_INCREMENT field in sqlite)
+
+			http://www.devdaily.com/android/sqlite-autoincrement-serial-identity-primary-key
+			http://www.sqlite.org/autoinc.html
+
+
+when the program access a file, it needs to check if the emails exists, if not, add them to a databae, in that database each email must be assigned a unique ID that can define the possition in the graph
+
+
+
+CREATE TABLE IF NOT EXISTS correspondence_map (count,from_m,from_uniqueNumber,to_me,to_uniqueNumber)"
+
+
+

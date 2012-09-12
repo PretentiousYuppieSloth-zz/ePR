@@ -1,0 +1,12 @@
+Construct af mimetype fileextractor for emails..
+
+
+Make it so that people can map files for specific users over a whole "leak"
+	When files with attachments has been located (mime scanner?)
+		Make it possible to extract all users attached files into a directory structure with
+			The email message as a textfile
+			The header as a seperate text file
+			and the files contained in the emails
+			
+
+			

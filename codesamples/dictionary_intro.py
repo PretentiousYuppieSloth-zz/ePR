@@ -10,6 +10,11 @@ dict_test = {'Name': 'sloth', 'Age': 99, 'Class': 'First'};
 print "dict_test['Name']: ", dict_test['Name'];
 print "dict_test['Age']: ", dict_test['Age'];
 
+
+#print dict from variable
+agevar = "Age"
+print dict_test[agevar]
+
 ## Append to dictionary
 dict_test['Sex'] = "Girl"
 

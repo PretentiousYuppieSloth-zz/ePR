@@ -1,4 +1,4 @@
-0.8	Meredith	1	O'Malley	10
+0.4	Meredith	1	O'Malley	10
 0.4	Meredith	1	Derek	12
 0.4	Avery	2	Lexie	7
 0.4	Teddy	3	Sloan	14

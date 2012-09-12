@@ -1,0 +1,5 @@
+SELECT DISTINCT to_me AS test FROM  correspondence_map UNION ALL SELECT DISTINCT from_m AS test FROM  correspondence_map WHERE from_m NOT IN (SELECT to_me FROM correspondence_map)
+
+#Selects ever single username and makes sure that there are no duplets
+
+
