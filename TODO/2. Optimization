@@ -1,5 +1,7 @@
 
 
+If we need to run the application with the :memory: option for the database, we need to be able to pipe the data into a fifopipe and then access(make fifo, listen, write..)   or (make fifo, write, liste) pipesize     ulimit -a
+
 If i append my sql statement to a variable and remember the semicolon at the end, i can commit the whole string at the end..max 4000chars though
 
 
@@ -16,3 +18,16 @@ Look for a function that can be used as a alternative to os.walk.path, os.walk.p
 #Implement mailbox.Maildir if possible. 
 #http://docs.python.org/library/mailbox.html
 #
+
+Is this faster then the current method ? is it possible to optimize the  process by only parsing the header and thereby working with smaller vars?
+http://nullege.com/codes/show/src%40t%40m%40tmda-HEAD%40trunk%40tmda%40TMDA%40Util.py/521/email.parser.HeaderParser/python
+http://docs.python.org/library/email.parser.html#email.parser.Parser.parse
+	        from email.parser import HeaderParser
+	        Parser = HeaderParser()
+            msg = Parser.parsestr(mailfile)
+            
+            
+            
+Test to see if the message is part of a series of messages..
+multipart
+http://blog.codeus.net/how-to-extract-email-contents-nicely-with-python/

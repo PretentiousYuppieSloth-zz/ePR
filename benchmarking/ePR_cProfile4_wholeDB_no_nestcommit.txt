@@ -1,0 +1,281 @@
+Welcome to ePigeon Raper 0.1
+ePR is a rather simple data extraction utility developed with
+the purpose of mapping major email leaks. Feel free to hack it
+muck it up and so on. It is just a "learn to python" project
+
+Importing mail.
+
+         73613935 function calls (73613420 primitive calls) in 737.203 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 <string>:1(ParseResult)
+        1    0.000    0.000    0.000    0.000 <string>:1(SplitResult)
+        1    0.000    0.000    0.000    0.000 __future__.py:48(<module>)
+        1    0.000    0.000    0.000    0.000 __future__.py:74(_Feature)
+        7    0.000    0.000    0.000    0.000 __future__.py:75(__init__)
+        1    0.000    0.000    0.000    0.000 __init__.py:1(<module>)
+        1    0.000    0.000    0.001    0.001 __init__.py:24(<module>)
+        1    0.000    0.000    0.000    0.000 __init__.py:5(<module>)
+       17    0.081    0.005  723.902   42.582 __init__.py:51(message_from_string)
+        1    0.000    0.000    0.000    0.000 __init__.py:74(LazyImporter)
+       19    0.000    0.000    0.000    0.000 __init__.py:75(__init__)
+        9    0.011    0.001    0.011    0.001 _parseaddr.py:162(quote)
+        1    0.000    0.000    0.000    0.000 _parseaddr.py:172(AddrlistClass)
+        1    0.000    0.000    0.000    0.000 _parseaddr.py:452(AddressList)
+        1    0.000    0.000    0.000    0.000 _parseaddr.py:7(<module>)
+        1    0.000    0.000    0.001    0.001 base64.py:3(<module>)
+        1    0.000    0.000    0.120    0.120 base64mime.py:25(<module>)
+        1    0.000    0.000    0.000    0.000 bisect.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 charset.py:156(Charset)
+        1    0.001    0.001    0.123    0.123 charset.py:6(<module>)
+        1    0.008    0.008    0.032    0.032 collections.py:1(<module>)
+        2    0.001    0.001    0.002    0.001 collections.py:237(namedtuple)
+        1    0.000    0.000    0.000    0.000 collections.py:25(OrderedDict)
+       99    0.000    0.000    0.000    0.000 collections.py:277(<genexpr>)
+       13    0.000    0.000    0.000    0.000 collections.py:294(<genexpr>)
+        1    0.000    0.000    0.000    0.000 collections.py:356(Counter)
+        1    0.001    0.001    0.001    0.001 dbapi2.py:24(<module>)
+        1    0.000    0.000    0.000    0.000 dbapi2.py:55(register_adapters_and_converters)
+        2    0.000    0.000    0.000    0.000 ePR.py:108(uniqueID_gen)
+       46    1.032    0.022  736.719   16.016 ePR.py:131(dataextraction)
+        1    0.000    0.000    0.000    0.000 ePR.py:224(Sqlconnection)
+        1    0.000    0.000    0.281    0.281 ePR.py:230(SqlCreateTable)
+       46    0.000    0.000  736.719   16.016 ePR.py:236(processDirectory)
+        1    0.001    0.001  737.203  737.203 ePR.py:4(<module>)
+       36    0.234    0.006    9.994    0.278 ePR.py:75(openfiles)
+        2    0.046    0.023    0.451    0.225 ePR.py:88(Sort_append)
+        1    0.000    0.000    0.000    0.000 encoders.py:5(<module>)
+        1    0.000    0.000    0.000    0.000 errors.py:13(MessageParseError)
+        1    0.000    0.000    0.000    0.000 errors.py:17(HeaderParseError)
+        1    0.000    0.000    0.000    0.000 errors.py:21(BoundaryError)
+        1    0.000    0.000    0.000    0.000 errors.py:25(MultipartConversionError)
+        1    0.000    0.000    0.000    0.000 errors.py:29(CharsetError)
+        1    0.000    0.000    0.000    0.000 errors.py:35(MessageDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:41(NoBoundaryInMultipartDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:44(StartBoundaryNotFoundDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:47(FirstHeaderLineIsContinuationDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:5(<module>)
+        1    0.000    0.000    0.000    0.000 errors.py:50(MisplacedEnvelopeHeaderDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:53(MalformedHeaderDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:56(MultipartInvariantViolationDefect)
+        1    0.000    0.000    0.000    0.000 errors.py:9(MessageError)
+   119030    1.536    0.000    1.536    0.000 feedparser.py:119(pushlines)
+       68    0.000    0.000    0.000    0.000 feedparser.py:126(__iter__)
+ 14549173   38.568    0.000   99.452    0.000 feedparser.py:129(next)
+        1    0.000    0.000    0.000    0.000 feedparser.py:137(FeedParser)
+       17    0.015    0.001    0.015    0.001 feedparser.py:140(__init__)
+   119030    1.060    0.000  229.170    0.002 feedparser.py:154(feed)
+   119047  378.173    0.003  630.388    0.005 feedparser.py:159(_call_parse)
+       17    0.100    0.006  475.250   27.956 feedparser.py:165(close)
+       34    0.017    0.001    0.028    0.001 feedparser.py:177(_new_message)
+       34    0.041    0.001    0.067    0.002 feedparser.py:187(_pop_message)
+119133/119047   42.471    0.000  252.216    0.002 feedparser.py:195(_parsegen)
+        1    0.002    0.002    0.164    0.164 feedparser.py:20(<module>)
+        1    0.000    0.000    0.000    0.000 feedparser.py:43(BufferedSubFile)
+       34    0.143    0.004    0.145    0.004 feedparser.py:431(_parse_headers)
+       17    0.000    0.000    0.000    0.000 feedparser.py:51(__init__)
+       17    0.000    0.000    0.000    0.000 feedparser.py:61(push_eof_matcher)
+       17    0.000    0.000    0.000    0.000 feedparser.py:64(pop_eof_matcher)
+       17    0.000    0.000    0.000    0.000 feedparser.py:67(close)
+ 14549239   42.747    0.000   60.884    0.000 feedparser.py:73(readline)
+       31    0.000    0.000    0.000    0.000 feedparser.py:91(unreadline)
+   119030   25.649    0.000   72.608    0.001 feedparser.py:96(push)
+      140    0.012    0.000    0.290    0.002 genericpath.py:26(isfile)
+        3    0.000    0.000    0.000    0.000 genericpath.py:47(getsize)
+        1    0.000    0.000    0.000    0.000 hashlib.py:55(<module>)
+        6    0.000    0.000    0.000    0.000 hashlib.py:94(__get_openssl_constructor)
+        1    0.024    0.024    0.024    0.024 heapq.py:31(<module>)
+        1    0.000    0.000    0.000    0.000 iterators.py:5(<module>)
+        1    0.000    0.000    0.000    0.000 keyword.py:11(<module>)
+       34    0.010    0.000    0.010    0.000 message.py:107(__init__)
+        4    0.000    0.000    0.000    0.000 message.py:140(is_multipart)
+       17    0.000    0.000    0.000    0.000 message.py:156(attach)
+       13    0.000    0.000    0.000    0.000 message.py:168(get_payload)
+       39    0.015    0.000    0.015    0.000 message.py:218(set_payload)
+      101    0.001    0.000    0.001    0.000 message.py:28(_splitparam)
+       17    0.000    0.000    0.000    0.000 message.py:281(__len__)
+       93    0.000    0.000    0.000    0.000 message.py:296(__setitem__)
+        8    0.000    0.000    0.000    0.000 message.py:316(__contains__)
+      185    0.030    0.000    0.031    0.000 message.py:354(get)
+      153    0.161    0.001    0.193    0.001 message.py:432(get_content_type)
+      102    0.023    0.000    0.215    0.002 message.py:456(get_content_maintype)
+       52    0.000    0.000    0.000    0.000 message.py:474(get_default_type)
+        8    0.009    0.001    0.048    0.006 message.py:492(_get_params_preserve)
+        1    0.033    0.033    0.157    0.157 message.py:5(<module>)
+        8    0.000    0.000    0.049    0.006 message.py:535(get_param)
+        8    0.013    0.002    0.013    0.002 message.py:62(_parseparam)
+        8    0.000    0.000    0.049    0.006 message.py:689(get_boundary)
+        8    0.000    0.000    0.000    0.000 message.py:80(_unquotevalue)
+        1    0.000    0.000    0.000    0.000 message.py:92(Message)
+        1    0.000    0.000    0.000    0.000 os.py:35(_get_exports_list)
+        1    0.000    0.000    0.000    0.000 parser.py:17(Parser)
+       17    0.007    0.000    0.007    0.000 parser.py:18(__init__)
+        1    0.001    0.001    0.164    0.164 parser.py:5(<module>)
+       17    0.518    0.030  723.600   42.565 parser.py:56(parse)
+       17    0.050    0.003  723.650   42.568 parser.py:74(parsestr)
+        1    0.000    0.000    0.000    0.000 parser.py:86(HeaderParser)
+     46/1    0.037    0.001  736.918  736.918 posixpath.py:209(walk)
+        2    0.000    0.000    0.000    0.000 posixpath.py:312(normpath)
+        2    0.000    0.000    0.000    0.000 posixpath.py:341(abspath)
+        2    0.000    0.000    0.000    0.000 posixpath.py:51(isabs)
+       57    0.000    0.000    0.001    0.000 posixpath.py:60(join)
+        1    0.000    0.000    0.000    0.000 quopri.py:3(<module>)
+        1    0.000    0.000    0.002    0.002 quoprimime.py:27(<module>)
+        1    0.000    0.000    0.000    0.000 random.py:100(seed)
+        1    0.005    0.005    0.005    0.005 random.py:40(<module>)
+        1    0.000    0.000    0.000    0.000 random.py:651(WichmannHill)
+        1    0.000    0.000    0.000    0.000 random.py:72(Random)
+        1    0.000    0.000    0.000    0.000 random.py:801(SystemRandom)
+        1    0.000    0.000    0.000    0.000 random.py:91(__init__)
+        5    0.000    0.000    0.030    0.006 re.py:169(findall)
+       20    0.019    0.001    0.114    0.006 re.py:188(compile)
+        8    0.023    0.003    0.023    0.003 re.py:204(escape)
+       25    0.014    0.001    0.122    0.005 re.py:226(_compile)
+        1    0.000    0.000    0.000    0.000 socket.py:167(_closedsocket)
+        1    0.000    0.000    0.000    0.000 socket.py:179(_socketobject)
+        1    0.000    0.000    0.000    0.000 socket.py:235(_fileobject)
+        1    0.010    0.010    0.010    0.010 socket.py:45(<module>)
+       36    0.000    0.000    0.004    0.000 sre_compile.py:178(_compile_charset)
+       36    0.002    0.000    0.003    0.000 sre_compile.py:207(_optimize_charset)
+      195    0.000    0.000    0.000    0.000 sre_compile.py:24(_identityfunction)
+       10    0.001    0.000    0.001    0.000 sre_compile.py:258(_mk_bitmap)
+   131/20    0.004    0.000    0.010    0.001 sre_compile.py:32(_compile)
+       33    0.000    0.000    0.000    0.000 sre_compile.py:354(_simple)
+       20    0.001    0.000    0.005    0.000 sre_compile.py:361(_compile_info)
+       40    0.000    0.000    0.000    0.000 sre_compile.py:474(isstring)
+       20    0.000    0.000    0.015    0.001 sre_compile.py:480(_code)
+       20    0.000    0.000    0.108    0.005 sre_compile.py:495(compile)
+        4    0.000    0.000    0.000    0.000 sre_compile.py:51(fixup)
+      210    0.001    0.000    0.001    0.000 sre_parse.py:126(__len__)
+      749    0.002    0.000    0.003    0.000 sre_parse.py:130(__getitem__)
+       33    0.000    0.000    0.000    0.000 sre_parse.py:134(__setitem__)
+      499    0.001    0.000    0.002    0.000 sre_parse.py:138(append)
+   164/53    0.002    0.000    0.002    0.000 sre_parse.py:140(getwidth)
+       20    0.000    0.000    0.016    0.001 sre_parse.py:178(__init__)
+     1369    0.022    0.000    0.024    0.000 sre_parse.py:182(__next)
+      423    0.001    0.000    0.002    0.000 sre_parse.py:195(match)
+     1155    0.003    0.000    0.010    0.000 sre_parse.py:201(get)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:205(tell)
+      146    0.000    0.000    0.000    0.000 sre_parse.py:210(isident)
+       37    0.000    0.000    0.001    0.000 sre_parse.py:216(isname)
+       28    0.015    0.001    0.015    0.001 sre_parse.py:225(_class_escape)
+      136    0.014    0.000    0.015    0.000 sre_parse.py:257(_escape)
+    62/20    0.001    0.000    0.076    0.004 sre_parse.py:301(_parse_sub)
+    86/22    0.017    0.000    0.076    0.003 sre_parse.py:379(_parse)
+       20    0.000    0.000    0.093    0.005 sre_parse.py:663(parse)
+       20    0.000    0.000    0.000    0.000 sre_parse.py:67(__init__)
+       42    0.011    0.000    0.011    0.000 sre_parse.py:72(opengroup)
+       42    0.000    0.000    0.000    0.000 sre_parse.py:83(closegroup)
+      131    0.000    0.000    0.000    0.000 sre_parse.py:90(__init__)
+        1    0.000    0.000    0.000    0.000 ssl.py:100(SSLSocket)
+        1    0.000    0.000    0.000    0.000 ssl.py:56(<module>)
+      195    0.000    0.000    0.000    0.000 stat.py:24(S_IFMT)
+       55    0.000    0.000    0.000    0.000 stat.py:40(S_ISDIR)
+      140    0.000    0.000    0.001    0.000 stat.py:49(S_ISREG)
+        1    0.000    0.000    0.000    0.000 urllib.py:109(ContentTooShortError)
+        1    0.000    0.000    0.000    0.000 urllib.py:115(URLopener)
+      485    0.002    0.000    0.002    0.000 urllib.py:1199(<genexpr>)
+        1    0.003    0.003    0.044    0.044 urllib.py:23(<module>)
+        1    0.000    0.000    0.000    0.000 urllib.py:609(FancyURLopener)
+        1    0.000    0.000    0.000    0.000 urllib.py:850(ftpwrapper)
+        1    0.000    0.000    0.000    0.000 urllib.py:945(addbase)
+        1    0.000    0.000    0.000    0.000 urllib.py:974(addclosehook)
+        1    0.000    0.000    0.000    0.000 urllib.py:989(addinfo)
+        1    0.000    0.000    0.000    0.000 urllib.py:999(addinfourl)
+        1    0.000    0.000    0.000    0.000 urlparse.py:113(SplitResult)
+        1    0.000    0.000    0.000    0.000 urlparse.py:121(ParseResult)
+        1    0.002    0.002    0.038    0.038 urlparse.py:29(<module>)
+      485    0.001    0.000    0.002    0.000 urlparse.py:315(<genexpr>)
+        1    0.000    0.000    0.000    0.000 urlparse.py:68(ResultMixin)
+       25    0.000    0.000    0.000    0.000 utils.py:222(unquote)
+        8    0.015    0.002    0.026    0.003 utils.py:260(decode_params)
+        8    0.000    0.000    0.000    0.000 utils.py:313(collapse_rfc2231_value)
+        1    0.052    0.052    0.120    0.120 utils.py:5(<module>)
+        1    0.000    0.000    0.000    0.000 uu.py:31(<module>)
+        1    0.000    0.000    0.000    0.000 uu.py:39(Error)
+       46    0.000    0.000    0.000    0.000 warnings.py:14(warnpy3k)
+        3    0.290    0.097    0.290    0.097 {_hashlib.openssl_md5}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha1}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha224}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha256}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha384}
+        1    0.000    0.000    0.000    0.000 {_hashlib.openssl_sha512}
+        1    0.000    0.000    0.000    0.000 {_sqlite3.connect}
+        2    0.000    0.000    0.000    0.000 {_sqlite3.register_adapter}
+        2    0.000    0.000    0.000    0.000 {_sqlite3.register_converter}
+       20    0.000    0.000    0.000    0.000 {_sre.compile}
+       11    0.000    0.000    0.000    0.000 {_sre.getlower}
+       13    0.000    0.000    0.000    0.000 {all}
+        1    0.000    0.000    0.000    0.000 {binascii.hexlify}
+        2    0.114    0.057    0.114    0.057 {cPickle.dumps}
+       17    0.000    0.000    0.000    0.000 {cStringIO.StringIO}
+     1224    0.002    0.000    0.002    0.000 {chr}
+        1    0.000    0.000    0.000    0.000 {dir}
+        1    0.000    0.000    0.000    0.000 {function seed at 0x7f713e90a848}
+       22    0.000    0.000    0.000    0.000 {getattr}
+        6    0.000    0.000    0.000    0.000 {globals}
+      848    0.001    0.000    0.001    0.000 {isinstance}
+122712/122656    0.155    0.000    0.156    0.000 {len}
+        2    0.000    0.000    0.000    0.000 {locals}
+        2    0.000    0.000    0.000    0.000 {map}
+        1    0.000    0.000    0.000    0.000 {math.exp}
+        2    0.000    0.000    0.000    0.000 {math.log}
+        1    0.000    0.000    0.000    0.000 {math.sqrt}
+       36    0.000    0.000    0.000    0.000 {max}
+       13    0.000    0.000    0.000    0.000 {method '__contains__' of 'frozenset' objects}
+       11    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+ 28863856   26.117    0.000   26.117    0.000 {method 'append' of 'list' objects}
+       36    0.001    0.000    0.001    0.000 {method 'close' of 'file' objects}
+        4    0.801    0.200    0.801    0.200 {method 'commit' of 'sqlite3.Connection' objects}
+      119    0.000    0.000    0.000    0.000 {method 'count' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'cursor' of 'sqlite3.Connection' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     1803    0.006    0.000    0.006    0.000 {method 'endswith' of 'str' objects}
+        6    0.498    0.083    0.498    0.083 {method 'execute' of 'sqlite3.Cursor' objects}
+       11    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+      110    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+        5    0.003    0.001    0.003    0.001 {method 'findall' of '_sre.SRE_Pattern' objects}
+      191    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+      377    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+       66    0.000    0.000    0.000    0.000 {method 'group' of '_sre.SRE_Match' objects}
+        6    0.000    0.000    0.000    0.000 {method 'has_key' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {method 'hexdigest' of '_hashlib.HASH' objects}
+        9    0.000    0.000    0.000    0.000 {method 'index' of 'str' objects}
+       86    0.000    0.000    0.000    0.000 {method 'isalnum' of 'str' objects}
+       13    0.000    0.000    0.000    0.000 {method 'isdigit' of 'str' objects}
+       22    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+      147   96.956    0.660   96.956    0.660 {method 'join' of 'str' objects}
+      746    0.001    0.000    0.001    0.000 {method 'lower' of 'str' objects}
+       93    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+     9239    0.028    0.000    0.028    0.000 {method 'match' of '_sre.SRE_Pattern' objects}
+      101    0.000    0.000    0.000    0.000 {method 'partition' of 'str' objects}
+ 14549872   18.313    0.000   18.313    0.000 {method 'pop' of 'list' objects}
+   119047   18.648    0.000   18.648    0.000 {method 'read' of 'cStringIO.StringI' objects}
+       36    9.748    0.271    9.748    0.271 {method 'read' of 'file' objects}
+       42    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+       56    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+      101    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+       25    0.009    0.000    0.009    0.000 {method 'search' of '_sre.SRE_Pattern' objects}
+        1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+   119030   30.218    0.000   30.218    0.000 {method 'split' of '_sre.SRE_Pattern' objects}
+      125    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+      201    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+      263    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+      298    0.000    0.000    0.000    0.000 {min}
+       39    0.012    0.000    0.012    0.000 {open}
+      452    0.001    0.000    0.001    0.000 {ord}
+        2    0.000    0.000    0.000    0.000 {posix.getcwd}
+       92    0.162    0.002    0.162    0.002 {posix.listdir}
+       55    0.000    0.000    0.000    0.000 {posix.lstat}
+      143    0.278    0.002    0.278    0.002 {posix.stat}
+        1    0.000    0.000    0.000    0.000 {posix.urandom}
+   119044    1.702    0.000    1.702    0.000 {range}
+        2    0.000    0.000    0.000    0.000 {repr}
+       40    0.000    0.000    0.000    0.000 {setattr}
+        2    0.000    0.000    0.000    0.000 {sys._getframe}
+        1    0.000    0.000    0.000    0.000 {zip}
+
+

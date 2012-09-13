@@ -8,8 +8,9 @@ Created on 24/08/2012
 #imports listed here. #Email.message is used so i can call the email.message_from_string() parsing function     #email.utils is used so i can call the get_all() function to extract FROM and TO fields from the Email
 import email
 
+
     #allow regular expressions (for email extration process)
-import re
+#import re
 
     #include OS so we can list files in our directory
 import os
@@ -40,8 +41,10 @@ folder_size = 0                 #Calculate folder size
 numlines = 0                    #Calculate number of lines processed
 mailfile = ""                   #???
 filepath = ""                   #???
-conn = ""                       #sqlite connection 
-cur = ""                        #????
+conn = ""                       #sqlite connection for the memory db 
+cur = ""                        #sqlite curser for the memory db
+conn1 = ""                      #sqlite connection for the fileDB
+cur = ""                        #sqlite curser for the fileDB
 walkpath = ""                   #????
 top_level_dir = "emails"     #Directory to perform data extraction on.
 data_md5 = ""                   #MD5_Hash
@@ -49,7 +52,6 @@ UniqIdent = ""                  #for the concatenated ID-String
 TO_str = ""                     #
 FROM_str = ""                   #
 unique_ID_dict = {}             # Dictionary for sql appended mail lookup
-
 mailuniqueid_dict = {}          #so we can check whether or not we have registered the ID already
 mailuniqueid_counter_TO = 0     #Iterative count for the TO_mails
 mailuniqueid_counter_FROM = 0   #Iterative count for the FROM mails
@@ -59,6 +61,21 @@ TO_ID = 0
 
 
     #Functions
+
+def correspondence_plotter():
+    import Gnuplot
+    gp = Gnuplot.Gnuplot()
+    gp('set datafile separator "|"')
+    gp('set term jpeg medium size 1000,1000')
+    gp('set output "correspondence_map.jpeg"')    
+    gp('set grid')
+    gp('set xlabel "TO:"')
+    gp('set ylabel "FROM:"')
+    gp('set xtics rotate')
+    #'[0:25][0:25]"<...
+    gp.plot('[0:25][0:25]"< sqlite3 PidgeonLoft.db  \'select * from correspondence_map\'"using 5:3:(log($1)):xtic(4):ytic(2) title "Corrospondence plot" with circles,""using 5:3:1 with labels title" ')
+
+
 def openfiles():
     try :
         #take filename from file in our foreachloop and open via filehandle and stream into var mailfile
@@ -140,26 +157,44 @@ def dataextraction():
         filepath = path + slash + file_loop
         if os.path.isfile(filepath):
             
-            openfiles() #call openfiles function
+            openfiles() #call openfiles function  
             
-            #enumerate amount of lines in file
-            for lines in open(filepath):
-                numlines += 1
-                 
-                #Parse imported file to a format get_all() can handle
+            '''
+            testing a sorting mechanism..of sorts
+            '''
+            if "Your mailbox has exceeded one or more size limits set by your" in mailfile:
+                continue
+            
+            #Parse imported file to a format get_all() can handle
             msg = email.message_from_string(mailfile)
-                
-                #if file checked returns None(no email addresses), skip to next file(loop)
+
+                #if file checked returns None(no email address in To), skip to next file(loop)
             if msg.get('To') is None:
                 continue 
+            
+                #if file checked returns None(no emails address in FROM), skip to next file(loop)
+            if msg.get('From') is None:
+                continue
+            
+            
+                #enumerate amount of lines in file # move the counter to here, there is now need to count files if they dont countain any To: fields etc [the above check]
+            for lines in open(filepath):
+                numlines += 1
+            
             
             #get current filesize and put it into filesize var, append current filesize to folder_size to count amount of data
             filesize = os.path.getsize(filepath)
             folder_size += filesize
             
+            #this works with Eclipse execution, but not when done from shell, must be something todo with ...rwareeararar .. unicode specification in'app wise
+            filepath = filepath.encode('ascii', 'replace')           
             #Get wanted fields via msg.get(), use regular expressions to remove unnessasarry gunk,stuff and poop, then print results.        
-            TO_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)",  str(msg.get('To')), re.UNICODE)[0]        
-            FROM_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)", str(msg.get('from')), re.UNICODE)[0]
+            #TO_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)",  str(msg.get('To')), re.UNICODE)[0]        
+            #FROM_str = re.findall(r"([\w\-\._0-9]+@[\w\-\._0-9]+)", str(msg.get('from')), re.UNICODE)[0]
+            #print str(filepath) Just for debugging
+            TO_str = str(msg.get('To'))     
+            FROM_str = str(msg.get('from'))
+            
             
             #make everything lowercase so the md5_hash wount be different even though its the same email
             TO_str = TO_str.lower()
@@ -196,28 +231,53 @@ def dataextraction():
             filepath = os.path.abspath(filepath)
             #count each file processed amount of loops (files handled)
             mailcounter += 1
+            
 
 def Sqlconnection():
     global conn
     global cur
-    conn = sqlite3.connect("PigeonLoft.db")
+    conn = sqlite3.connect(":memory:")
     cur = conn.cursor()
 
 def SqlCreateTable():
-    cur.execute("CREATE TABLE IF NOT EXISTS Pidgeon_Nest (md5_hash,UniqIdent,m_from, m_to,Message_ID,m_filename)")
+    cur.execute("CREATE TABLE IF NOT EXISTS Pidgeon_Nest (md5_hash,UniqIdent,m_to,m_from,Message_ID,m_filename)")
     conn.commit()
     cur.execute("CREATE TABLE IF NOT EXISTS correspondence_map (count,to_m,to_uniqueNumber,from_m,from_uniqueNumber,md5_hash)")
     conn.commit()
-    
+
+
+def Sqlconnection1():
+    global conn1
+    global cur1
+    conn1 = sqlite3.connect("PidgeonLoft.db")
+    cur1 = conn.cursor()
+
+
+
 def processDirectory ( args, dirname, filenames ):
     global path                            
     path = dirname
     dataextraction()
 
+
+
+
 Sqlconnection()
 SqlCreateTable()
+
+
+
 os.path.walk(top_level_dir, processDirectory, None)
 
+
+Sqlconnection1()
+#SqlCreateTable1() Does not seem to be needed because its a direct dump
+query = "".join(line for line in conn.iterdump())
+conn1.executescript(query)
+
+correspondence_plotter()
+
+#os.remove("PidgeonLoft.db")    
 
 print "\nFinished!\n"    + "\t  Files processed:" + str(mailcounter) +"\t\tData processed:%0.2fMB" % (folder_size/(1024*1024.0)) + "\t\tNumber of Lines:" + str(numlines)  +"\n"
 

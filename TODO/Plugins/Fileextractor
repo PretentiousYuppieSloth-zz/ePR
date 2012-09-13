@@ -1,4 +1,5 @@
 Construct af mimetype fileextractor for emails..
+http://docs.python.org/library/email
 
 
 Make it so that people can map files for specific users over a whole "leak"
